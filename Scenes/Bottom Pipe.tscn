@@ -3,16 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://oie2kleylvg0" path="res://sprites/pipe-green.png" id="1_78j07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78j07"]
-size = Vector2(123, 508)
+size = Vector2(123, 1054)
 
 [node name="Bottom Pipe" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, -1)
+position = Vector2(0, 277)
 shape = SubResource("RectangleShape2D_78j07")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.3841858e-07, -2.3841858e-07)
-scale = Vector2(2.653846, 1.5812501)
+position = Vector2(-2.3841858e-07, 276.5)
+scale = Vector2(2.653846, 3.309375)
 texture = ExtResource("1_78j07")
