@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://khj8rq625ckx"]
-
-[ext_resource type="Texture2D" uid="uid://oie2kleylvg0" path="res://sprites/pipe-green.png" id="1_b08wk"]
-
-[node name="Bottom Pipe Parralax" type="Parallax2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_b08wk")
