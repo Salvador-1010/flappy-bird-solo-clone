@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj6wix6n3y01j"]
+
+[ext_resource type="Texture2D" uid="uid://dbp5nj1h8yg57" path="res://sprites/redbird-downflap.png" id="1_dnvpi"]
+[ext_resource type="Texture2D" uid="uid://bwqu67nr8j5ik" path="res://sprites/redbird-midflap.png" id="2_vl8r2"]
+[ext_resource type="Texture2D" uid="uid://c10b51cv35cil" path="res://sprites/redbird-upflap.png" id="3_rr33m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xf4a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dnvpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vl8r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rr33m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfwoh"]
+radius = 12.0
+height = 24.0
+
+[node name="Bird" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_xf4a6")
+frame_progress = 0.98970515
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pfwoh")

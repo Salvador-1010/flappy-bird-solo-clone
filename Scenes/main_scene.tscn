@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfhlsd688kg48"]
+
+[ext_resource type="Texture2D" uid="uid://cjij4rq2hbmgg" path="res://sprites/background-day.png" id="1_6l7je"]
+[ext_resource type="Texture2D" uid="uid://xyv5gkvw4vsk" path="res://sprites/base.png" id="2_jv6wh"]
+[ext_resource type="Script" uid="uid://d0piv05pvqrc1" path="res://Scripts/CameraScript.gd" id="3_jv6wh"]
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="BackgroundDay" type="Sprite2D" parent="."]
+position = Vector2(-2.12504, -104.12504)
+scale = Vector2(2.7369792, 2.2924805)
+texture = ExtResource("1_6l7je")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(4.25, 574.00006)
+scale = Vector2(2.3675597, 2.455357)
+texture = ExtResource("2_jv6wh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_jv6wh")
