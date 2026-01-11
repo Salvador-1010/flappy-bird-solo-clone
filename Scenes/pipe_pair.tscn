@@ -10,14 +10,6 @@ size = Vector2(0, 1548)
 [node name="Pipe Pair" type="Node2D"]
 script = ExtResource("1_d5igu")
 
-[node name="Bottom Pipe" parent="." instance=ExtResource("1_gnugl")]
-visible = false
-position = Vector2(4, 290)
-
-[node name="Top Pipe" parent="." instance=ExtResource("1_gnugl")]
-position = Vector2(-271, 40)
-scale = Vector2(-1, -1)
-
 [node name="Score Line" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Score Line"]
@@ -25,4 +17,6 @@ z_index = 2
 position = Vector2(68, -23)
 shape = SubResource("RectangleShape2D_6ox5h")
 
-[node name="Top Pipe2" parent="." instance=ExtResource("3_6ox5h")]
+[node name="Top Pipe" parent="." instance=ExtResource("3_6ox5h")]
+
+[node name="Bottom Pipe" parent="." instance=ExtResource("1_gnugl")]

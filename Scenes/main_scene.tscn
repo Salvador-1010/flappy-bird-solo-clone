@@ -13,6 +13,7 @@ position = Vector2(-2, 0)
 scale = Vector2(3, 3)
 
 [node name="Base" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(4.5000114, 562.25)
 scale = Vector2(1.7529763, 2.6651793)
 texture = ExtResource("2_jv6wh")
@@ -29,4 +30,4 @@ texture = ExtResource("1_6l7je")
 
 [node name="Pipe Pair" parent="." instance=ExtResource("4_x6ack")]
 z_index = -1
-position = Vector2(190, 29)
+position = Vector2(182, -8)
