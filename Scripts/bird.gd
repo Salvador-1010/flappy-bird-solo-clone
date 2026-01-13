@@ -4,6 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -550.0
 
+@onready var death_collider: Area2D = $DeathCollider
+
+#signal for bird to emit when it touches pipe
+signal birdDied
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -16,3 +20,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	move_and_slide()
+
+func _on_death_collider_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Pipes"):
+		birdDied.emit()

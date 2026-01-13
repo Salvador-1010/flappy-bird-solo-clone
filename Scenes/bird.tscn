@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj6wix6n3y01j"]
+[gd_scene load_steps=8 format=3 uid="uid://cj6wix6n3y01j"]
 
 [ext_resource type="Texture2D" uid="uid://dbp5nj1h8yg57" path="res://sprites/redbird-downflap.png" id="1_dnvpi"]
 [ext_resource type="Script" uid="uid://dwlj2n3ifcgdw" path="res://Scripts/bird.gd" id="1_vl8r2"]
@@ -26,6 +26,9 @@ animations = [{
 radius = 12.0
 height = 24.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vl8r2"]
+radius = 12.0
+
 [node name="Bird" type="CharacterBody2D" groups=["Bird_Character"]]
 script = ExtResource("1_vl8r2")
 
@@ -37,3 +40,11 @@ frame_progress = 0.62745184
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_pfwoh")
+
+[node name="DeathCollider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathCollider"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vl8r2")
+
+[connection signal="area_entered" from="DeathCollider" to="." method="_on_death_collider_area_entered"]

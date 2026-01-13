@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfhlsd688kg48"]
+[gd_scene load_steps=6 format=3 uid="uid://bfhlsd688kg48"]
 
 [ext_resource type="Texture2D" uid="uid://cjij4rq2hbmgg" path="res://sprites/background-day.png" id="1_6l7je"]
+[ext_resource type="Script" uid="uid://gsdwoo8c8sqe" path="res://Scripts/game_manager.gd" id="1_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cj6wix6n3y01j" path="res://Scenes/bird.tscn" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://xyv5gkvw4vsk" path="res://sprites/base.png" id="2_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://caperhq01sdxf" path="res://Scenes/pipe_pair.tscn" id="4_x6ack"]
 
 [node name="Main Scene" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_iacmt")
 
 [node name="Bird" parent="." instance=ExtResource("1_jv6wh")]
 z_index = 1
@@ -21,6 +25,9 @@ texture = ExtResource("2_jv6wh")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(10, 0)
+autoscroll = Vector2(100, 0)
+repeat_times = 100
 
 [node name="BackgroundDay" type="Sprite2D" parent="Parallax2D"]
 z_index = -1

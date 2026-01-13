@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78j07"]
 size = Vector2(100, 833.5625)
 
-[node name="Bottom Pipe" type="Area2D"]
+[node name="Bottom Pipe" type="Area2D" groups=["Pipes"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
