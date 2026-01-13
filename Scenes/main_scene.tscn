@@ -1,33 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfhlsd688kg48"]
+[gd_scene load_steps=8 format=3 uid="uid://bfhlsd688kg48"]
 
 [ext_resource type="Texture2D" uid="uid://cjij4rq2hbmgg" path="res://sprites/background-day.png" id="1_6l7je"]
 [ext_resource type="Script" uid="uid://gsdwoo8c8sqe" path="res://Scripts/game_manager.gd" id="1_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cj6wix6n3y01j" path="res://Scenes/bird.tscn" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://xyv5gkvw4vsk" path="res://sprites/base.png" id="2_jv6wh"]
+[ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://caperhq01sdxf" path="res://Scenes/pipe_pair.tscn" id="4_x6ack"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ev3c"]
+distance = 4.0
 
 [node name="Main Scene" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_iacmt")
+pipe_pair_scene = ExtResource("4_x6ack")
+
+[node name="SpawnTimer" type="Timer" parent="GameManager"]
+wait_time = 2.0
+autostart = true
 
 [node name="Bird" parent="." instance=ExtResource("1_jv6wh")]
 z_index = 1
-position = Vector2(-2, 0)
+position = Vector2(-139, -6)
 scale = Vector2(3, 3)
-
-[node name="Base" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(4.5000114, 562.25)
-scale = Vector2(1.7529763, 2.6651793)
-texture = ExtResource("2_jv6wh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="ScoreLabel" type="Label" parent="Camera2D"]
+unique_name_in_owner = true
+z_index = 4
+offset_left = -263.0
+offset_top = -454.0
+offset_right = 71.0
+offset_bottom = -405.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_6ev3c")
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+
 [node name="Parallax2D" type="Parallax2D" parent="."]
-repeat_size = Vector2(10, 0)
-autoscroll = Vector2(100, 0)
-repeat_times = 100
 
 [node name="BackgroundDay" type="Sprite2D" parent="Parallax2D"]
 z_index = -1
@@ -35,6 +49,14 @@ position = Vector2(2, 4)
 scale = Vector2(2.7369792, 2.2924805)
 texture = ExtResource("1_6l7je")
 
-[node name="Pipe Pair" parent="." instance=ExtResource("4_x6ack")]
-z_index = -1
-position = Vector2(182, -8)
+[node name="Floor" type="Area2D" parent="." groups=["Floor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-4, 419)
+shape = SubResource("WorldBoundaryShape2D_6ev3c")
+
+[node name="Base" type="Sprite2D" parent="Floor"]
+z_index = 1
+position = Vector2(4.5000114, 562.25)
+scale = Vector2(1.7529763, 2.6651793)
+texture = ExtResource("2_jv6wh")
