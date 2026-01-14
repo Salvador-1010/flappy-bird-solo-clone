@@ -23,6 +23,7 @@ func _addScore() -> void:
 	
 func _spawnPipe() -> void:
 	var pipe_pair = pipe_pair_scene.instantiate()
+	pipe_pair.difficulty = score
 	add_child(pipe_pair) 
 	pipe_pair.pointScored.connect(_addScore)
 	print("pipeSpawned")

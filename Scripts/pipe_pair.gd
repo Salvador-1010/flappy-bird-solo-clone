@@ -48,13 +48,13 @@ func setPositions() -> void:
 	
 #generates the gap based on the score (changes difficulty)
 func gapRandomizer(score: int) -> void:
-	if score <= 10:
+	if score <= 2:
 		top_distance = randi_range(115, 400)
 		bottom_distance = randi_range(115, 340)
-	elif score > 10 and score <= 25:
+	elif score > 2 and score <= 3:
 		top_distance = randi_range(95, 325)
 		bottom_distance = randi_range(95, 285)
-	elif score > 25 and score < 50:
+	elif score > 3 and score < 8:
 		top_distance = randi_range(85, 265)
 		bottom_distance = randi_range(85, 240)
 	
