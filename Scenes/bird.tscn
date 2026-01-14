@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj6wix6n3y01j"]
+[gd_scene load_steps=10 format=3 uid="uid://cj6wix6n3y01j"]
 
 [ext_resource type="Texture2D" uid="uid://dbp5nj1h8yg57" path="res://sprites/redbird-downflap.png" id="1_dnvpi"]
 [ext_resource type="Script" uid="uid://dwlj2n3ifcgdw" path="res://Scripts/bird.gd" id="1_vl8r2"]
 [ext_resource type="Texture2D" uid="uid://bwqu67nr8j5ik" path="res://sprites/redbird-midflap.png" id="2_vl8r2"]
 [ext_resource type="Texture2D" uid="uid://c10b51cv35cil" path="res://sprites/redbird-upflap.png" id="3_rr33m"]
 [ext_resource type="AudioStream" uid="uid://bpfehabe3afvq" path="res://Audio/506586__mrthenoronha__kill-enemy-3-8-bit.wav" id="5_rr33m"]
+[ext_resource type="AudioStream" uid="uid://gel0c8qeuwir" path="res://Audio/270320__littlerobotsoundfactory__jump_00.wav" id="6_xf4a6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xf4a6"]
 animations = [{
@@ -48,9 +49,12 @@ shape = SubResource("CapsuleShape2D_pfwoh")
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vl8r2")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="deathAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_rr33m")
 
+[node name="jumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xf4a6")
+
 [connection signal="area_entered" from="DeathCollider" to="." method="_on_death_collider_area_entered"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="deathAudio" to="." method="_on_audio_stream_player_2d_finished"]
