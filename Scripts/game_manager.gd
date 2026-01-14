@@ -13,6 +13,7 @@ var score := 0
 func _ready() -> void:
 	bird.birdDied.connect(_playerDied)
 	spawn_timer.timeout.connect(_spawnPipe)
+	_spawnPipe()
 
 func _playerDied() -> void:
 	get_tree().reload_current_scene()

@@ -3,6 +3,7 @@ extends Node2D
 @onready var top_pipe: Area2D = $"Top Pipe"
 @onready var score_line: Area2D = $"Score Line"
 @onready var bottom_pipe: Area2D = $"Bottom Pipe"
+@onready var audioPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 #creates two separate distance varaibles so that the pipes
@@ -48,13 +49,13 @@ func setPositions() -> void:
 	
 #generates the gap based on the score (changes difficulty)
 func gapRandomizer(score: int) -> void:
-	if score <= 2:
+	if score <= 10:
 		top_distance = randi_range(115, 400)
 		bottom_distance = randi_range(115, 340)
-	elif score > 2 and score <= 3:
+	elif score > 10 and score <= 25:
 		top_distance = randi_range(95, 325)
 		bottom_distance = randi_range(95, 285)
-	elif score > 3 and score < 8:
+	else:
 		top_distance = randi_range(85, 265)
 		bottom_distance = randi_range(85, 240)
 	
@@ -64,3 +65,4 @@ func _on_score_line_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Bird_Character"):
 		score_line.monitoring = false
 		pointScored.emit()
+		audioPlayer.play()
