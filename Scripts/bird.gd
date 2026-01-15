@@ -11,6 +11,8 @@ const JUMP_VELOCITY = -500.0
 #signal for bird to emit when it touches pipe
 signal birdDied
 
+func _ready() -> void:
+	death_collider.monitoring = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
