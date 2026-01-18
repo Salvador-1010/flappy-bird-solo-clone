@@ -4,6 +4,8 @@ extends Node
 @onready var score_label: Label = %ScoreLabel
 @onready var spawn_timer: Timer = $SpawnTimer
 @export var pipe_pair_scene: PackedScene
+@onready var death_screen: PanelContainer = $"../UI/Control/DeathScreen"
+@onready var finalScore: Label = $"../UI/Control/DeathScreen/MarginContainer/VBoxContainer/Score"
 
 
 var score := 0
@@ -16,7 +18,10 @@ func _ready() -> void:
 	_spawnPipe()
 
 func _playerDied() -> void:
-	get_tree().reload_current_scene()
+	death_screen.visible = true
+	finalScore.text = "Score: " + str(score)
+	get_tree().paused = true
+	#get_tree().reload_current_scene()
 
 func _addScore() -> void:
 	score += 1
@@ -28,3 +33,12 @@ func _spawnPipe() -> void:
 	add_child(pipe_pair) 
 	pipe_pair.pointScored.connect(_addScore)
 	print("pipeSpawned")
+
+
+
+func _on_restart_button_pressed() -> void:
+	print("restart")
+
+
+func _on_menu_button_pressed() -> void:
+	print("menu")

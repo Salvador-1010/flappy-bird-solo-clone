@@ -12,7 +12,7 @@ const JUMP_VELOCITY = -500.0
 signal birdDied
 
 func _ready() -> void:
-	death_collider.monitoring = false
+	death_collider.monitoring = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

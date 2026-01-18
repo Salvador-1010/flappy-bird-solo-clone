@@ -26,6 +26,10 @@ window/stretch/mode="viewport"
 Bird_Character=""
 Pipes=""
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 ui_up={
