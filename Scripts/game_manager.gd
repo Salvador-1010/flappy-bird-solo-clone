@@ -13,6 +13,7 @@ var score := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().paused = false
 	bird.birdDied.connect(_playerDied)
 	spawn_timer.timeout.connect(_spawnPipe)
 	_spawnPipe()
@@ -37,8 +38,10 @@ func _spawnPipe() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	print("restart")
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 
 func _on_menu_button_pressed() -> void:
-	print("menu")
+	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

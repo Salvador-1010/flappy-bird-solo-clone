@@ -11,7 +11,7 @@
 distance = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ev3c"]
-bg_color = Color(0.31380275, 0.6097027, 0.43323362, 1)
+bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
 border_width_left = 16
 border_width_top = 16
 border_width_right = 16
@@ -100,6 +100,7 @@ texture = ExtResource("2_jv6wh")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
