@@ -4,8 +4,8 @@ extends Node
 @onready var score_label: Label = %ScoreLabel
 @onready var spawn_timer: Timer = $SpawnTimer
 @export var pipe_pair_scene: PackedScene
-@onready var death_screen: PanelContainer = $"../UI/Control/DeathScreen"
-@onready var finalScore: Label = $"../UI/Control/DeathScreen/MarginContainer/VBoxContainer/Score"
+@onready var death_screen: PanelContainer = $"../UI/DeathScreenControl/DeathScreen"
+@onready var finalScore: Label = $"../UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/Score"
 
 
 var score := 0
