@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxyh6uovnxlnj"]
+[gd_scene load_steps=7 format=3 uid="uid://dxyh6uovnxlnj"]
 
 [ext_resource type="Script" uid="uid://c6ysep032ynky" path="res://Scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://pplsjxuhrvqo" path="res://sprites/message.png" id="2_1ehe0"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="3_1ehe0"]
+[ext_resource type="AudioStream" uid="uid://d28wthp61eqt8" path="res://Audio/MenuMusic.mp3" id="4_ce3w2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
 bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_48xlc")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -78,4 +80,10 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
 text = "Settings"
 
+[node name="menuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ce3w2")
+autoplay = true
+parameters/looping = true
+
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/MarginContainer/settingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/MarginContainer/settingsButton" to="." method="_on_settings_button_pressed"]

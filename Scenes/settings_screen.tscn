@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddj4umsrqpgo7"]
+[gd_scene load_steps=6 format=3 uid="uid://ddj4umsrqpgo7"]
+
+[ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_bu2iy"]
+[ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="2_xi1qj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orvt5"]
 bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
@@ -8,7 +11,22 @@ border_width_right = 32
 border_width_bottom = 32
 border_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lii5r"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ieuc7"]
+
 [node name="Settings Screen" type="Control"]
+process_mode = 3
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +58,59 @@ theme_override_constants/margin_bottom = 32
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ExitSettingsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 402
+
+[node name="ExitSettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ExitSettingsContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_bu2iy")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_lii5r")
 text = "X"
+
+[node name="SettingsHeader" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = -17
+
+[node name="settingsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xi1qj")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 65
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ieuc7")
+
+[node name="SliderMargains" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="Slider Containers" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains"]
+layout_mode = 2
+
+[node name="MasterVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+layout_mode = 2
+size_flags_horizontal = 3

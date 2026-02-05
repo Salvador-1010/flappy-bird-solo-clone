@@ -7,6 +7,7 @@ extends Node
 @onready var death_screen: PanelContainer = $"../UI/DeathScreenControl/DeathScreen"
 @onready var finalScore: Label = $"../UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/Score"
 
+@export var settingsPopup: PackedScene
 
 var score := 0
 
@@ -41,7 +42,10 @@ func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
-
 func _on_menu_button_pressed() -> void:
 	#get_tree().reload_current_scene()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func _on_settings_button_pressed() -> void:
+	var settings_popup = settingsPopup.instantiate()
+	add_child(settings_popup)

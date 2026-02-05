@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfhlsd688kg48"]
+[gd_scene load_steps=15 format=3 uid="uid://bfhlsd688kg48"]
 
 [ext_resource type="Texture2D" uid="uid://cjij4rq2hbmgg" path="res://sprites/background-day.png" id="1_6l7je"]
 [ext_resource type="Script" uid="uid://gsdwoo8c8sqe" path="res://Scripts/game_manager.gd" id="1_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cj6wix6n3y01j" path="res://Scenes/bird.tscn" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://xyv5gkvw4vsk" path="res://sprites/base.png" id="2_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://ddj4umsrqpgo7" path="res://Scenes/settings_screen.tscn" id="3_huasi"]
+[ext_resource type="AudioStream" uid="uid://bxq7h3aao7gup" path="res://Audio/BackgroundMusic.mp3" id="3_maf8m"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://caperhq01sdxf" path="res://Scenes/pipe_pair.tscn" id="4_x6ack"]
 
@@ -18,7 +20,7 @@ border_width_right = 16
 border_width_bottom = 16
 border_color = Color(0.21237245, 0.4386459, 0.30465, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ev3c"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huasi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maf8m"]
 bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
@@ -46,15 +48,32 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1efj"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Main Scene" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_iacmt")
 pipe_pair_scene = ExtResource("4_x6ack")
+settingsPopup = ExtResource("3_huasi")
 
 [node name="SpawnTimer" type="Timer" parent="GameManager"]
 wait_time = 2.0
 autostart = true
+
+[node name="backgroundMusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("3_maf8m")
+autoplay = true
+parameters/looping = true
 
 [node name="Bird" parent="." instance=ExtResource("1_jv6wh")]
 z_index = 1
@@ -156,14 +175,15 @@ text = "Score:"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 183.555)
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_6ev3c")
+theme_override_constants/separation = 135
+theme_override_styles/separator = SubResource("StyleBoxEmpty_huasi")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -191,5 +211,22 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_huasi")
 text = "Main Menu"
 
+[node name="settingsMargain" type="MarginContainer" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = -35
+
+[node name="settingsButton" type="Button" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/settingsMargain"]
+custom_minimum_size = Vector2(190, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.6509804, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_6ev3c")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_m1efj")
+text = "Settings"
+
 [connection signal="pressed" from="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RestartButton" to="GameManager" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MenuButton" to="GameManager" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/settingsMargain/settingsButton" to="GameManager" method="_on_settings_button_pressed"]
