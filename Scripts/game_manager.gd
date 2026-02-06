@@ -6,6 +6,9 @@ extends Node
 @export var pipe_pair_scene: PackedScene
 @onready var death_screen: PanelContainer = $"../UI/DeathScreenControl/DeathScreen"
 @onready var finalScore: Label = $"../UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/Score"
+@onready var ui: CanvasLayer = $"../UI"
+@onready var settings_scene_margain_container: MarginContainer = $"../UI/SettingsSceneMargainContainer"
+
 
 @export var settingsPopup: PackedScene
 
@@ -48,4 +51,5 @@ func _on_menu_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	var settings_popup = settingsPopup.instantiate()
-	add_child(settings_popup)
+	settings_scene_margain_container.visible = true
+	settings_scene_margain_container.add_child(settings_popup)
