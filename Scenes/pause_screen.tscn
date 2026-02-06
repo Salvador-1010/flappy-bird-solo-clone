@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://045c2l7a2drq"]
+
+[ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_8py1w"]
+[ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="2_hl5t3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16tsp"]
+bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orahx"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Pause Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausePanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(450, 475)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_16tsp")
+
+[node name="MarginContainer" type="MarginContainer" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="EscButtonContainer" type="MarginContainer" parent="PausePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 0
+
+[node name="ExitButton" type="Button" parent="PausePanel/MarginContainer/VBoxContainer/EscButtonContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_8py1w")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_orahx")
+text = "X"
+
+[node name="PausedHeaderContainer" type="MarginContainer" parent="PausePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -30
+
+[node name="PausedHeader" type="Label" parent="PausePanel/MarginContainer/VBoxContainer/PausedHeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_hl5t3")
+theme_override_font_sizes/font_size = 40
+text = "Paused"

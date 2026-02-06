@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddj4umsrqpgo7"]
+[gd_scene load_steps=7 format=3 uid="uid://ddj4umsrqpgo7"]
 
 [ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_bu2iy"]
+[ext_resource type="Script" uid="uid://b1tcgbkaetab7" path="res://Scripts/settings_screen.gd" id="1_xi1qj"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="2_xi1qj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orvt5"]
 bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
-border_width_left = 32
-border_width_top = 32
-border_width_right = 32
-border_width_bottom = 32
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
 border_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lii5r"]
@@ -34,12 +35,16 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_xi1qj")
 
 [node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 800)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_orvt5")
@@ -61,9 +66,9 @@ layout_mode = 2
 
 [node name="ExitSettingsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 13
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 402
+theme_override_constants/margin_right = 370
 
 [node name="ExitSettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ExitSettingsContainer"]
 custom_minimum_size = Vector2(60, 60)
@@ -79,8 +84,8 @@ text = "X"
 [node name="SettingsHeader" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = -17
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -20
 
 [node name="settingsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsHeader"]
 layout_mode = 2
@@ -93,13 +98,13 @@ text = "Settings"
 
 [node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 65
+theme_override_constants/separation = 55
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ieuc7")
 
 [node name="SliderMargains" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
 
 [node name="Slider Containers" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains"]
 layout_mode = 2
@@ -115,3 +120,5 @@ text = "Master Volume"
 [node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ExitSettingsContainer/ExitSettingsButton" to="." method="_on_exit_settings_button_pressed"]

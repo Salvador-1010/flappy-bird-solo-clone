@@ -14,6 +14,11 @@ extends Node
 
 var score := 0
 
+#while the default game is running esc can be pressed
+#to pause the game and go to the settings menu 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action("escape"):
+		call("_on_settings_button_pressed")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,5 +56,5 @@ func _on_menu_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	var settings_popup = settingsPopup.instantiate()
-	settings_scene_margain_container.visible = true
-	settings_scene_margain_container.add_child(settings_popup)
+	#settings_scene_margain_container.visible = true
+	ui.add_child(settings_popup)
