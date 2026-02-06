@@ -11,6 +11,10 @@ border_width_top = 24
 border_width_right = 24
 border_width_bottom = 24
 border_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lii5r"]
 bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
@@ -66,9 +70,9 @@ layout_mode = 2
 
 [node name="ExitSettingsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 370
+theme_override_constants/margin_right = 375
 
 [node name="ExitSettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ExitSettingsContainer"]
 custom_minimum_size = Vector2(60, 60)

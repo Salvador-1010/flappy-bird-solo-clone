@@ -9,17 +9,26 @@ extends Node
 @onready var ui: CanvasLayer = $"../UI"
 @onready var settings_scene_margain_container: MarginContainer = $"../UI/SettingsSceneMargainContainer"
 
-
+@export var pausedPopup: PackedScene
 @export var settingsPopup: PackedScene
 
 var score := 0
-
+#variable to keep track of whether the game is paused or not
+var paused := false
+var paused_popup_container:Control = null
 #while the default game is running esc can be pressed
 #to pause the game and go to the settings menu 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action("escape"):
-		call("_on_settings_button_pressed")
-
+		if not paused:
+			paused_popup_container = pausedPopup.instantiate()
+			ui.add_child(paused_popup_container)
+			paused = true
+			get_tree().paused = true
+		elif paused:
+			if is_instance_valid(paused_popup_container):
+				print("valid")
+				paused_popup_container.queue_free()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false

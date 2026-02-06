@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfhlsd688kg48"]
+[gd_scene load_steps=16 format=3 uid="uid://bfhlsd688kg48"]
 
 [ext_resource type="Texture2D" uid="uid://cjij4rq2hbmgg" path="res://sprites/background-day.png" id="1_6l7je"]
 [ext_resource type="Script" uid="uid://gsdwoo8c8sqe" path="res://Scripts/game_manager.gd" id="1_iacmt"]
 [ext_resource type="PackedScene" uid="uid://cj6wix6n3y01j" path="res://Scenes/bird.tscn" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://xyv5gkvw4vsk" path="res://sprites/base.png" id="2_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://ddj4umsrqpgo7" path="res://Scenes/settings_screen.tscn" id="3_huasi"]
+[ext_resource type="PackedScene" uid="uid://045c2l7a2drq" path="res://Scenes/pause_screen.tscn" id="3_m1efj"]
 [ext_resource type="AudioStream" uid="uid://bxq7h3aao7gup" path="res://Audio/BackgroundMusic.mp3" id="3_maf8m"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://caperhq01sdxf" path="res://Scenes/pipe_pair.tscn" id="4_x6ack"]
@@ -19,6 +20,10 @@ border_width_top = 16
 border_width_right = 16
 border_width_bottom = 16
 border_color = Color(0.21237245, 0.4386459, 0.30465, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huasi"]
 
@@ -64,6 +69,7 @@ corner_radius_bottom_left = 8
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_iacmt")
 pipe_pair_scene = ExtResource("4_x6ack")
+pausedPopup = ExtResource("3_m1efj")
 settingsPopup = ExtResource("3_huasi")
 
 [node name="SpawnTimer" type="Timer" parent="GameManager"]
@@ -71,6 +77,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="backgroundMusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
+process_mode = 3
 stream = ExtResource("3_maf8m")
 autoplay = true
 parameters/looping = true
