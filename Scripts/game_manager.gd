@@ -20,15 +20,15 @@ var paused_popup_container:Control = null
 #to pause the game and go to the settings menu 
 func _input(event: InputEvent) -> void:
 	if event.is_action("escape"):
-		if not paused:
-			paused_popup_container = pausedPopup.instantiate()
-			ui.add_child(paused_popup_container)
-			paused = true
-			get_tree().paused = true
-		elif paused:
-			if is_instance_valid(paused_popup_container):
-				print("valid")
-				paused_popup_container.queue_free()
+		paused_popup_container = pausedPopup.instantiate()
+		ui.add_child(paused_popup_container)
+		paused_popup_container.panelClose.connect(closePausePanel)
+		paused = true
+		get_tree().paused = true
+
+func closePausePanel() -> void:
+	paused = false
+	get_tree().paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false
