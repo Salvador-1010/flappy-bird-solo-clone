@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://045c2l7a2drq"]
+[gd_scene load_steps=12 format=3 uid="uid://045c2l7a2drq"]
 
 [ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_8py1w"]
 [ext_resource type="Script" uid="uid://fb5o7fugo1nk" path="res://Scripts/pause_screen.gd" id="1_hl5t3"]
+[ext_resource type="PackedScene" uid="uid://ddj4umsrqpgo7" path="res://Scenes/settings_screen.tscn" id="2_16tsp"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="2_hl5t3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16tsp"]
@@ -18,14 +19,51 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orahx"]
 bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hl5t3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umkmc"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvwk4"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kt4h4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nwfw"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Pause Screen" type="Control"]
 process_mode = 3
@@ -36,6 +74,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hl5t3")
+settingsPopup = ExtResource("2_16tsp")
 
 [node name="PausePanel" type="Panel" parent="."]
 custom_minimum_size = Vector2(450, 475)
@@ -96,4 +135,58 @@ theme_override_fonts/font = ExtResource("2_hl5t3")
 theme_override_font_sizes/font_size = 40
 text = "Paused"
 
+[node name="HSeparator" type="HSeparator" parent="PausePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 124
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hl5t3")
+
+[node name="retryandmenuButtons" type="HBoxContainer" parent="PausePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="retryButton" type="Button" parent="PausePanel/MarginContainer/VBoxContainer/retryandmenuButtons"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_hl5t3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_umkmc")
+text = "Retry"
+
+[node name="mainMenuButton" type="Button" parent="PausePanel/MarginContainer/VBoxContainer/retryandmenuButtons"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_hl5t3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvwk4")
+text = "Main Menu"
+
+[node name="HSeparator2" type="HSeparator" parent="PausePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kt4h4")
+
+[node name="settingsButton" type="Button" parent="PausePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_hl5t3")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8nwfw")
+text = "Settings"
+
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/EscButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/retryandmenuButtons/retryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/retryandmenuButtons/mainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/settingsButton" to="." method="_on_settings_button_pressed"]

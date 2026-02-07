@@ -18,17 +18,24 @@ var paused := false
 var paused_popup_container:Control = null
 #while the default game is running esc can be pressed
 #to pause the game and go to the settings menu 
-func _input(event: InputEvent) -> void:
-	if event.is_action("escape"):
-		paused_popup_container = pausedPopup.instantiate()
-		ui.add_child(paused_popup_container)
-		paused_popup_container.panelClose.connect(closePausePanel)
-		paused = true
-		get_tree().paused = true
-
 func closePausePanel() -> void:
 	paused = false
 	get_tree().paused = false
+	paused_popup_container = null
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("escape"):
+		print(paused)
+		if paused:
+			closePausePanel()
+		else:
+			paused = true
+			paused_popup_container = pausedPopup.instantiate()
+			ui.add_child(paused_popup_container)
+			paused_popup_container.panelClose.connect(closePausePanel)
+			get_tree().paused = true
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false
