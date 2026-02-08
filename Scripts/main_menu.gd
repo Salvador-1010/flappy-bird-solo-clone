@@ -2,6 +2,7 @@ extends Control
 
 @onready var settings_button: Button = $PanelContainer/MarginContainer/MarginContainer/settingsButton
 
+@export var settingsPopup : PackedScene
 var started := false
 signal mouseHovering
 
@@ -23,4 +24,5 @@ func _process(delta: float) -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	print("Pressed")
+	var tempSettingsPopup = settingsPopup.instantiate()
+	add_child(tempSettingsPopup)

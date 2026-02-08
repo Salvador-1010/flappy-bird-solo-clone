@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://045c2l7a2drq"]
+[gd_scene load_steps=13 format=3 uid="uid://045c2l7a2drq"]
 
 [ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_8py1w"]
 [ext_resource type="Script" uid="uid://fb5o7fugo1nk" path="res://Scripts/pause_screen.gd" id="1_hl5t3"]
 [ext_resource type="PackedScene" uid="uid://ddj4umsrqpgo7" path="res://Scenes/settings_screen.tscn" id="2_16tsp"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="2_hl5t3"]
+[ext_resource type="PackedScene" uid="uid://dxyh6uovnxlnj" path="res://Scenes/main_menu.tscn" id="2_orahx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16tsp"]
 bg_color = Color(0.3137255, 0.60784316, 0.43137255, 1)
@@ -74,6 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hl5t3")
+mainmenuScene = ExtResource("2_orahx")
 settingsPopup = ExtResource("2_16tsp")
 
 [node name="PausePanel" type="Panel" parent="."]

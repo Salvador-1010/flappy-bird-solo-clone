@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxyh6uovnxlnj"]
+[gd_scene load_steps=8 format=3 uid="uid://dxyh6uovnxlnj"]
 
 [ext_resource type="Script" uid="uid://c6ysep032ynky" path="res://Scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://pplsjxuhrvqo" path="res://sprites/message.png" id="2_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://ddj4umsrqpgo7" path="res://Scenes/settings_screen.tscn" id="2_n45e2"]
 [ext_resource type="FontFile" uid="uid://b8p5d2253p2eb" path="res://Fonts/PixelOperator8.ttf" id="3_1ehe0"]
 [ext_resource type="AudioStream" uid="uid://d28wthp61eqt8" path="res://Audio/MenuMusic.mp3" id="4_ce3w2"]
 
@@ -36,6 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_48xlc")
+settingsPopup = ExtResource("2_n45e2")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -82,7 +84,6 @@ text = "Settings"
 
 [node name="menuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ce3w2")
-autoplay = true
 parameters/looping = true
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/MarginContainer/settingsButton" to="." method="_on_settings_button_mouse_entered"]

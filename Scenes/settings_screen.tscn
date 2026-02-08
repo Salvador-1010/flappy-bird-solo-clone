@@ -42,7 +42,7 @@ size_flags_vertical = 4
 script = ExtResource("1_xi1qj")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(500, 800)
+custom_minimum_size = Vector2(450, 750)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,17 +60,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
 [node name="ExitSettingsContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 375
 
@@ -89,7 +89,7 @@ text = "X"
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = -20
+theme_override_constants/margin_top = 5
 
 [node name="settingsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SettingsHeader"]
 layout_mode = 2
@@ -107,8 +107,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ieuc7")
 
 [node name="SliderMargains" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_right = 55
 
 [node name="Slider Containers" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains"]
 layout_mode = 2

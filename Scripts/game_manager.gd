@@ -16,17 +16,26 @@ var score := 0
 #variable to keep track of whether the game is paused or not
 var paused := false
 var paused_popup_container:Control = null
+var settings_popup: Control = null
+
+var isSettingsopen := false
 #while the default game is running esc can be pressed
 #to pause the game and go to the settings menu 
 func closePausePanel() -> void:
 	paused = false
 	get_tree().paused = false
 	paused_popup_container = null
-	
+
+func closeSettingsPanel() -> void:
+	isSettingsopen = false
+	settings_popup = null
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		print(paused)
-		if paused:
+		if isSettingsopen:
+			pass
+		elif paused:
 			closePausePanel()
 		else:
 			paused = true
@@ -34,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			ui.add_child(paused_popup_container)
 			paused_popup_container.panelClose.connect(closePausePanel)
 			get_tree().paused = true
+			paused_popup_container.game_manager = self
 
 
 # Called when the node enters the scene tree for the first time.
@@ -71,6 +81,8 @@ func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_settings_button_pressed() -> void:
-	var settings_popup = settingsPopup.instantiate()
+	settings_popup = settingsPopup.instantiate()
 	#settings_scene_margain_container.visible = true
 	ui.add_child(settings_popup)
+	settings_popup.game_manager = self
+	isSettingsopen = true

@@ -80,7 +80,6 @@ autostart = true
 [node name="backgroundMusicPlayer" type="AudioStreamPlayer2D" parent="GameManager"]
 process_mode = 3
 stream = ExtResource("3_maf8m")
-autoplay = true
 parameters/looping = true
 
 [node name="Bird" parent="." instance=ExtResource("1_jv6wh")]
