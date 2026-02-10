@@ -79,7 +79,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_bu2iy")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_lii5r")
@@ -95,7 +95,7 @@ theme_override_constants/margin_top = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_xi1qj")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
@@ -112,16 +112,62 @@ theme_override_constants/margin_right = 55
 
 [node name="Slider Containers" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains"]
 layout_mode = 2
+theme_override_constants/separation = 25
 
 [node name="MasterVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
 layout_mode = 2
-theme_override_constants/separation = 24
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+[node name="MasterVolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_xi1qj")
+theme_override_font_sizes/font_size = 16
 text = "Master Volume"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+layout_mode = 2
+
+[node name="SFXlabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/SFXVolumeSlider"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_xi1qj")
+theme_override_font_sizes/font_size = 16
+text = "SFX Volume"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/SFXVolumeSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MusicVolumeSlider"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_xi1qj")
+text = "Music Volume"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MusicVolumeSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
 
