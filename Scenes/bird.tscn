@@ -52,9 +52,11 @@ shape = SubResource("CapsuleShape2D_vl8r2")
 [node name="deathAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_rr33m")
+bus = &"SFX "
 
 [node name="jumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xf4a6")
+bus = &"SFX "
 
 [connection signal="area_entered" from="DeathCollider" to="." method="_on_death_collider_area_entered"]
 [connection signal="finished" from="deathAudio" to="." method="_on_audio_stream_player_2d_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddj4umsrqpgo7"]
+[gd_scene load_steps=10 format=3 uid="uid://ddj4umsrqpgo7"]
 
 [ext_resource type="FontFile" uid="uid://clmjsqgg2q1as" path="res://Fonts/PixelOperator8-Bold.ttf" id="1_bu2iy"]
 [ext_resource type="Script" uid="uid://b1tcgbkaetab7" path="res://Scripts/settings_screen.gd" id="1_xi1qj"]
@@ -28,6 +28,30 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ieuc7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi1qj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ieuc7"]
+bg_color = Color(0.21176471, 0.4392157, 0.30588236, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e15r"]
+bg_color = Color(0.18431373, 0.3019608, 0.23137255, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Settings Screen" type="Control"]
 process_mode = 3
@@ -115,6 +139,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 
 [node name="MasterVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="MasterVolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
@@ -122,7 +147,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_xi1qj")
 theme_override_font_sizes/font_size = 16
 text = "Master Volume"
@@ -132,8 +157,12 @@ autowrap_mode = 2
 [node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MasterVolumeSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
 
 [node name="SFXVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="SFXlabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/SFXVolumeSlider"]
@@ -141,7 +170,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_xi1qj")
 theme_override_font_sizes/font_size = 16
 text = "SFX Volume"
@@ -151,9 +180,12 @@ autowrap_mode = 2
 [node name="SFXSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/SFXVolumeSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
 
 [node name="MusicVolumeSlider" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="MusicVolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MusicVolumeSlider"]
@@ -161,7 +193,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("2_xi1qj")
 text = "Music Volume"
 horizontal_alignment = 1
@@ -170,5 +202,42 @@ autowrap_mode = 2
 [node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/SliderMargains/Slider Containers/MusicVolumeSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 240
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xi1qj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="CancelButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_xi1qj")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ieuc7")
+text = "Cancel"
+
+[node name="ApplyButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.2598694, 0.4101982, 0.3197417, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_xi1qj")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_1e15r")
+text = "Apply"
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ExitSettingsContainer/ExitSettingsButton" to="." method="_on_exit_settings_button_pressed"]
