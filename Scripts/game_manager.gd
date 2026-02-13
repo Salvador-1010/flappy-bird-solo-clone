@@ -8,6 +8,7 @@ extends Node
 @onready var finalScore: Label = $"../UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/Score"
 @onready var ui: CanvasLayer = $"../UI"
 @onready var settings_scene_margain_container: MarginContainer = $"../UI/SettingsSceneMargainContainer"
+@onready var high_score: Label = $"../UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/HBoxContainer/HighScore"
 
 @export var pausedPopup: PackedScene
 @export var settingsPopup: PackedScene
@@ -54,8 +55,11 @@ func _ready() -> void:
 	_spawnPipe()
 
 func _playerDied() -> void:
+	if score > AutoSave.data_to_save["High_Score"]:
+		AutoSave._setHighScore(score)
 	death_screen.visible = true
 	finalScore.text = "Score: " + str(score)
+	high_score.text = "High Score: " + str(AutoSave.data_to_save["High_Score"])
 	get_tree().paused = true
 	#get_tree().reload_current_scene()
 

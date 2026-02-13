@@ -44,6 +44,7 @@ func _load() -> void:
 	AudioServer.set_bus_volume_db(masterBusIndex, data_to_save["MasterVolume"])
 	AudioServer.set_bus_volume_db(SFXBusIndex, data_to_save["SFXVolume"])
 	AudioServer.set_bus_volume_db(MusicBusIndex, data_to_save["MusicVolume"])
+	
 		
 func _save() -> void:
 	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -72,4 +73,8 @@ func _setMusicVolume(newVol:float) -> void:
 	var newdB = linear_to_db(newVol)
 	AudioServer.set_bus_volume_db(MusicBusIndex, newdB)
 	data_to_save["MusicVolume"] = newdB
+	_save()
+
+func _setHighScore(newscore:int) -> void:
+	data_to_save["High_Score"] = newscore
 	_save()

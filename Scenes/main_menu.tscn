@@ -84,6 +84,8 @@ text = "Settings"
 
 [node name="menuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ce3w2")
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/MarginContainer/settingsButton" to="." method="_on_settings_button_mouse_entered"]

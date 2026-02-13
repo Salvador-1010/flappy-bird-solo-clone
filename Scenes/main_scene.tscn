@@ -163,7 +163,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_shadow_color = Color(0.32941177, 0.22352941, 0.2784314, 1)
 theme_override_colors/font_outline_color = Color(0.9764706, 0.9372549, 0.9098039, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 6
 theme_override_constants/shadow_outline_size = 16
 theme_override_fonts/font = ExtResource("4_6ev3c")
 theme_override_font_sizes/font_size = 41
@@ -175,12 +175,27 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
 theme_override_colors/font_shadow_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
 theme_override_colors/font_outline_color = Color(0.9764706, 0.972549, 0.9764706, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 6
 theme_override_constants/shadow_outline_size = 16
 theme_override_fonts/font = ExtResource("4_6ev3c")
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="HighScore" type="Label" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9882353, 0.627451, 0.28235295, 1)
+theme_override_colors/font_shadow_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("4_6ev3c")
+theme_override_font_sizes/font_size = 28
+text = "High Score:"
 
 [node name="HSeparator" type="HSeparator" parent="UI/DeathScreenControl/DeathScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
