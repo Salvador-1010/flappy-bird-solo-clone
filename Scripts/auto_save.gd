@@ -2,6 +2,10 @@ extends Node
 
 const save_path := "user://save.json"
 
+const masterBusIndex := 0
+const SFXBusIndex := 1
+const MusicBusIndex := 2
+
 #premade dictionary to store all of the data that will be kept longterm
 var data_to_save := {
 	"High_Score" : 0,
@@ -36,11 +40,36 @@ func _load() -> void:
 	data_to_save = dataDup
 	
 	#code to apply all of the saved data to beginning of game run
+	#settings mastervolume
+	AudioServer.set_bus_volume_db(masterBusIndex, data_to_save["MasterVolume"])
+	AudioServer.set_bus_volume_db(SFXBusIndex, data_to_save["SFXVolume"])
+	AudioServer.set_bus_volume_db(MusicBusIndex, data_to_save["MusicVolume"])
 		
 func _save() -> void:
 	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
 	save_file.store_var(data_to_save.duplicate())
 	save_file.close()
-	
+
 
 #code to implement setter functions for better scalability 
+#setter function for master volume
+func _setMasterVolume(newVol:float) -> void:
+	#converts the slider float value to dB
+	var newdB = linear_to_db(newVol)
+	#sets the current volume value to the new dB
+	AudioServer.set_bus_volume_db(masterBusIndex,newdB)
+	#finally actually saves it to the disk for the future
+	data_to_save["MasterVolume"] = newdB
+	_save()
+
+func _setSFXVolume(newVol:float) -> void:
+	var newdB = linear_to_db(newVol)
+	AudioServer.set_bus_volume_db(SFXBusIndex, newdB)
+	data_to_save["SFXVolume"] = newdB
+	_save()
+	
+func _setMusicVolume(newVol:float) -> void:
+	var newdB = linear_to_db(newVol)
+	AudioServer.set_bus_volume_db(MusicBusIndex, newdB)
+	data_to_save["MusicVolume"] = newdB
+	_save()
